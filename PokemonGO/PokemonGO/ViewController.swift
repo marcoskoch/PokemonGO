@@ -23,6 +23,29 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.startUpdatingLocation()
         
     }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        if status != .authorizedWhenInUse && status != .notDetermined {
+            let alertController = UIAlertController(title: "Permissão de Localização", message: "Precisamos da Localização", preferredStyle: .alert)
+            
+            let acaoConfiguracoes = UIAlertAction(title: "Abrir Configurações", style: .default, handler: {
+                (alertaConfiguracoes) in
+                
+                if let configuracoes = NSURL( string: UIApplication.openSettingsURLString ) {
+                    UIApplication.shared.open(configuracoes as URL)
+                }
+            })
+            
+            let acaoCancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
+            
+            alertController.addAction(acaoConfiguracoes)
+            alertController.addAction(acaoCancelar)
+            
+            present(alertController, animated: true, completion: nil)
+        }
+        
+    }
 
 
 }
