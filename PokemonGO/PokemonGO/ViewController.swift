@@ -51,17 +51,26 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if counter < 3 {
-            if let coordinates = gerenciadorLocalizacao.location?.coordinate {
-                let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 200, longitudinalMeters: 200)
-                
-                mapa.setRegion(region, animated: true)
-            }
-            
+            self.centerPlayerOnMap()
             counter += 1
         } else {
             gerenciadorLocalizacao.stopUpdatingLocation()
         }
         
+    }
+    
+    func centerPlayerOnMap(){
+        if let coordinates = gerenciadorLocalizacao.location?.coordinate {
+            let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 200, longitudinalMeters: 200)
+            mapa.setRegion(region, animated: true)
+        }
+    }
+    
+    @IBAction func centerPlayer(_ sender: Any) {
+        self.centerPlayerOnMap()
+    }
+    
+    @IBAction func openPokedex(_ sender: Any) {
     }
 }
 
