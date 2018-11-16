@@ -78,4 +78,13 @@ class CoreDataPokemon {
         
         return []
     }
+    
+    func capturePokemon( pokemon: Pokemon ) {
+        let context = self.getContext()
+        pokemon.capturado = true
+        
+        do {
+            try context.save()
+        } catch {}
+    }
 }

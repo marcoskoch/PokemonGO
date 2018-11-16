@@ -110,6 +110,19 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let annotation = view.annotation
+        let pokemon = (view.annotation as! PokemonAnnotation).pokemon
+        
+        mapView.deselectAnnotation(annotation, animated: true)
+        
+        if annotation is MKUserLocation{
+            return
+        }
+        
+        self.coreDataPokemon.capturePokemon(pokemon: pokemon)
+    }
+    
     @IBAction func centerPlayer(_ sender: Any) {
         self.centerPlayerOnMap()
     }
