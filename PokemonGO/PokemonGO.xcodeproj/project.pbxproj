@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D47924C219F1D3200FFFFB1 /* CoreDataPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47924B219F1D3200FFFFB1 /* CoreDataPokemon.swift */; };
+		9D47924E219F3D5F00FFFFB1 /* PokemonAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D47924D219F3D5F00FFFFB1 /* PokemonAnnotation.swift */; };
 		9DAB5EF0219B4FCB00CF734B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5EEF219B4FCB00CF734B /* AppDelegate.swift */; };
 		9DAB5EF2219B4FCB00CF734B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAB5EF1219B4FCB00CF734B /* ViewController.swift */; };
 		9DAB5EF5219B4FCB00CF734B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DAB5EF3219B4FCB00CF734B /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D47924B219F1D3200FFFFB1 /* CoreDataPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPokemon.swift; sourceTree = "<group>"; };
+		9D47924D219F3D5F00FFFFB1 /* PokemonAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAnnotation.swift; sourceTree = "<group>"; };
 		9DAB5EEC219B4FCB00CF734B /* PokemonGO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonGO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DAB5EEF219B4FCB00CF734B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9DAB5EF1219B4FCB00CF734B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				9DAB5EFB219B4FCC00CF734B /* LaunchScreen.storyboard */,
 				9DAB5EFE219B4FCC00CF734B /* Info.plist */,
 				9DAB5EF6219B4FCB00CF734B /* PokemonGO.xcdatamodeld */,
+				9D47924B219F1D3200FFFFB1 /* CoreDataPokemon.swift */,
+				9D47924D219F3D5F00FFFFB1 /* PokemonAnnotation.swift */,
 			);
 			path = PokemonGO;
 			sourceTree = "<group>";
@@ -150,8 +156,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D47924C219F1D3200FFFFB1 /* CoreDataPokemon.swift in Sources */,
 				9DAB5EF2219B4FCB00CF734B /* ViewController.swift in Sources */,
 				9DAB5EF8219B4FCB00CF734B /* PokemonGO.xcdatamodeld in Sources */,
+				9D47924E219F3D5F00FFFFB1 /* PokemonAnnotation.swift in Sources */,
 				9DAB5EF0219B4FCB00CF734B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
