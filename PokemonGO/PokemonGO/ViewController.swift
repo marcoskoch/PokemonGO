@@ -120,7 +120,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             return
         }
         
-        self.coreDataPokemon.capturePokemon(pokemon: pokemon)
+        if let coordinateAnnotation = annotation?.coordinate {
+            let region = MKCoordinateRegion(center: coordinateAnnotation, latitudinalMeters: 300, longitudinalMeters: 300)
+            mapa.setRegion(region, animated: true)
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            if let coord = self.gerenciadorLocalizacao.location?.coordinate {
+                if self.mapa.visibleMapRect.contains( MKMapPoint(coord)) {
+                    self.coreDataPokemon.capturePokemon(pokemon: pokemon)
+                } else {
+                    print("Náo pode pegar")
+                }
+            }
+        }
+        
     }
     
     @IBAction func centerPlayer(_ sender: Any) {
