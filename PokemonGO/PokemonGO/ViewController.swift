@@ -110,6 +110,46 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let annotation = view.annotation
+        let pokemon = (view.annotation as! PokemonAnnotation).pokemon
+        
+        mapView.deselectAnnotation(annotation, animated: true)
+        
+        if annotation is MKUserLocation{
+            return
+        }
+        
+        if let coordinateAnnotation = annotation?.coordinate {
+            let region = MKCoordinateRegion(center: coordinateAnnotation, latitudinalMeters: 300, longitudinalMeters: 300)
+            mapa.setRegion(region, animated: true)
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (timer) in
+            if let coord = self.gerenciadorLocalizacao.location?.coordinate {
+                if self.mapa.visibleMapRect.contains( MKMapPoint(coord)) {
+                    self.coreDataPokemon.capturePokemon(pokemon: pokemon)
+                    self.mapa.removeAnnotation(annotation!)
+                    
+                    let alertController =  UIAlertController (title: "Parabéns!!", message: "Você capturou o pokemon: \(String(describing: pokemon.nome)) ", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction (title: "Ok", style: .default, handler: nil)
+                    alertController.addAction(ok)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                } else {
+                    let alertController =  UIAlertController (title: "Você não pode capturar!!", message: "Aproxime-se para capturar o pokemon: \(String(describing: pokemon.nome)) ", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction (title: "Ok", style: .default, handler: nil)
+                    alertController.addAction(ok)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+        }
+        
+    }
+    
     @IBAction func centerPlayer(_ sender: Any) {
         self.centerPlayerOnMap()
     }
