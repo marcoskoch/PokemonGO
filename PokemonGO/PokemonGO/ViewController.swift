@@ -129,8 +129,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             if let coord = self.gerenciadorLocalizacao.location?.coordinate {
                 if self.mapa.visibleMapRect.contains( MKMapPoint(coord)) {
                     self.coreDataPokemon.capturePokemon(pokemon: pokemon)
+                    self.mapa.removeAnnotation(annotation!)
+                    
+                    let alertController =  UIAlertController (title: "Parabéns!!", message: "Você capturou o pokemon: \(String(describing: pokemon.nome)) ", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction (title: "Ok", style: .default, handler: nil)
+                    alertController.addAction(ok)
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 } else {
-                    print("Náo pode pegar")
+                    let alertController =  UIAlertController (title: "Você não pode capturar!!", message: "Aproxime-se para capturar o pokemon: \(String(describing: pokemon.nome)) ", preferredStyle: .alert)
+                    
+                    let ok = UIAlertAction (title: "Ok", style: .default, handler: nil)
+                    alertController.addAction(ok)
+                    
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
